@@ -72,7 +72,7 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
     
     ![Imagen11](https://user-images.githubusercontent.com/118635410/245169434-de2f85b4-9df4-4053-92c5-62af16c95bf9.png) 
     
- ##Parte 2: CloudWatch
+ ## Parte 2: CloudWatch
  7. CloudWatch se utiliza para monitorear instancias. En este caso, queremos monitorear los dos servidores web. Inicia CloudWatch de la siguiente manera.
     ***aws ec2 monitor-instances --instance-ids instance1_id instance2_id***
     ¿Cuál es la salida? 
