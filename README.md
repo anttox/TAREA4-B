@@ -117,7 +117,7 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
      
      ![Imagen16](https://user-images.githubusercontent.com/118635410/245181084-67c5ee51-821e-4463-a9a6-92158c3cb0ae.png)
      
-     ![Imagen17](https://user-images.githubusercontent.com/118635410/245181084-67c5ee51-821e-4463-a9a6-92158c3cb0ae.png)
+     ![Imagen17](https://user-images.githubusercontent.com/118635410/245182572-ac305262-a4b4-4248-a61a-fc17a8a1addf.png)
 
 
 
