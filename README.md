@@ -50,12 +50,20 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
  5. Abre el navegador del sandox. Recupera la dirección IP de tu balanceador de carga del paso 1, ingresa la URL http://nombre_dns_de_tu_balanceador_carga/ en tu navegador web. ¿Qué apareció en el navegador?
 
   ![Imagen9](https://user-images.githubusercontent.com/118635410/245161608-cb6efd73-6664-4c10-975b-8aa72db20f63.png) 
+ 
  6. Abre dos ventanas de terminal adicionales y ssh en ambos servidores web. En cada uno, cd al directorio DocumentRoot (probablemente /usr/local/apache/htdocs) y modifique la página de inicio predeterminada,           index.html, de la siguiente manera.
-    <html><body><h1>¡Funciona!</h1>
+    **<html><body><h1>¡Funciona!</h1>
     <p>La solicitud se envió a la instancia 1.</p>
     <p>La solicitud fue atendida por el servidor web 1.</p>
-    </body></html>
+    </body></html>**
     Para el segundo servidor, haz lo mismo excepto que use la instancia 2 y el servidor 2 para las líneas 2 y 3. En el navegador web, accede a tu balanceador de carga 4 veces (actualícelo/recárgalo 4 veces). Esto       genera 4 solicitudes a tu balanceador de carga.
     ¿Cuántas solicitudes atendió el servidor web 1? ¿Cuántas solicitudes atendió el servidor web 2?
+    
+    Usamos el comando ***ssh -i devenv-key.pem ubuntu@insertamos la ip de nuestra primera id_instancia***, este código también funcionara para la segunda id_instancia, para saber la ip public de nuestra instancia       usamos el comando ***aws ec2 describe-instances --instance-ids insert_your_instance.***
+    
+    El comando cd /var/www se utiliza como ubicación predeterminada para almacenar los archivos y documentos de un servidor web. En particular, este directorio suele ser el directorio raíz (DocumentRoot) donde se       almacenan los archivos que serán servidos por el servidor web
+    
+    Una vez dentro abriremos el archivo index.html con el comando vi index.html, realizaremos las modificaciones de su contenido con el siguiente comando, y por último visualizamos en AWS en la parte de                 balanceadores de carga las cantidades de solicitudes que hemos hecho en cada servidor web.
+
     
 
