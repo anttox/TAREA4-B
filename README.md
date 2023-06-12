@@ -133,6 +133,21 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
      
  12. A continuación, eliminamos la instancia de ELB de la siguiente manera. ***aws elb delete-load-balancer --load-balancer-name tu_nombre_de_usuario***
      
+      ![Imagen19](https://user-images.githubusercontent.com/118635410/245300993-11e8f591-70c1-468f-b1d7-afa73026bf8b.png)
+      
+      Finalmente, finaliza las instancias del servidor web de tus instancias y tu instancia EC2. ¿Qué comandos usaste? ¿Cuál es la salida?
+      
+      Para finalizar las instancias del servidor web (instance1_id e instance2_id) usamos el comando ***aws ec2 terminate-instances --instance-ids your_id_intance1 your_id_instance2***
+      
+      ![Imagen20](https://user-images.githubusercontent.com/118635410/245300993-11e8f591-70c1-468f-b1d7-afa73026bf8b.png)
+      
+      Para finalizar la instancia EC2 usamos el siguiente comando ***aws ec2 terminate-instances --instance-ids your_ID_instance_EC2***
+      
+      ![Imagen21](https://user-images.githubusercontent.com/118635410/245300993-11e8f591-70c1-468f-b1d7-afa73026bf8b.png)
+
+
+
+
 
 
 
