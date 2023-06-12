@@ -78,7 +78,15 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
     ¿Cuál es la salida? 
     
     La salida puede proporcionar información sobre las instancias y su estado de monitoreo.
-    ![Imagen10](https://user-images.githubusercontent.com/118635410/245169370-069e62c5-6b20-4f0f-bb63-163880f49d0b.png)
+    
+    ![Imagen12](https://user-images.githubusercontent.com/118635410/245174745-93dbc424-6ca3-41f1-a4b3-2d9ba8e79be3.png)
+    
+    Esto indica que el monitoreo se ha habilitado correctamente para las instancias especificadas y su estado se establece en "enabled".
+    
+    Ahora examina las métricas disponibles con lo siguiente: ***aws cloudwatch list-metrics --namespace "AWS/EC2"***
+    ¿Viste la métrica CPUUtilization en el resultado?
+    
+    ![Imagen13](https://user-images.githubusercontent.com/118635410/245174745-93dbc424-6ca3-41f1-a4b3-2d9ba8e79be3.png)
 
 
     
