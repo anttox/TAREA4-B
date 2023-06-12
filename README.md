@@ -115,7 +115,7 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
      
      ¿Qué resultados recibió de ambos comandos?
      
-     ![Imagen16](https://user-images.githubusercontent.com/118635410/245181084-67c5ee51-821e-4463-a9a6-92158c3cb0ae.png)
+     ![Imagen16](https://user-images.githubusercontent.com/118635410/245182516-4e8afdd5-2df9-40a9-9393-a8e063933d91.png)
      
      ![Imagen17](https://user-images.githubusercontent.com/118635410/245182572-ac305262-a4b4-4248-a61a-fc17a8a1addf.png)
 
