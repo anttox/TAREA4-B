@@ -127,7 +127,14 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
      
      ¿Cuál es la salida?
      
-     ![Imagen18](https://user-images.githubusercontent.com/118635410/245182572-ac305262-a4b4-4248-a61a-fc17a8a1addf.png)
+     ![Imagen18](https://user-images.githubusercontent.com/118635410/245300417-30c9c04a-4b69-4dba-8b7b-ee2dc6db8229.png)
+     
+     Esto indica que las instancias instance1_id y instance2_id se han desregistrado exitosamente del balanceador de carga especificado.
+     
+ 12. A continuación, eliminamos la instancia de ELB de la siguiente manera. ***aws elb delete-load-balancer --load-balancer-name tu_nombre_de_usuario***
+     
+
+
 
 
 
