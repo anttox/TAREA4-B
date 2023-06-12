@@ -47,6 +47,7 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
     ***aws elb describe-instance-health --load-balancer-name tu_nombre_de_usuario ¿Cuál es la salida?
     
   ![Imagen8](https://user-images.githubusercontent.com/118635410/245160343-e01bb2be-e21d-41fe-9788-d49ed52a3227.png) 
+ 
  5. Abre el navegador del sandox. Recupera la dirección IP de tu balanceador de carga del paso 1, ingresa la URL http://nombre_dns_de_tu_balanceador_carga/ en tu navegador web. ¿Qué apareció en el navegador?
 
   ![Imagen9](https://user-images.githubusercontent.com/118635410/245161608-cb6efd73-6664-4c10-975b-8aa72db20f63.png) 
