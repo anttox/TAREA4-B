@@ -151,7 +151,19 @@ Usamos AWS CLI para configurar sus instancias EC2 para el escalado automático.
 
    ¿Cuál es la salida?
    
-   ![Imagen23](https://user-images.githubusercontent.com/118635410/245301939-0105c758-9490-4182-a918-9e49df56ac5a.png)
+   ![Imagen23](https://user-images.githubusercontent.com/118635410/245304853-08e6fce2-9bd9-4d0d-9f58-909865e3f024.png)
+   
+   A continuación, crea un equilibrador de carga. ***aws elb create-load-balancer --load-balancer-name tu_nombre_de_usuario-elb --listeners "Protocol=HTTP, LoadBalancerPort=80, InstanceProtocol=HTTP,InstancePort=80"    – availability-zones us-east-1c***
+   
+   ¿Cuál es la salida?
+   
+   La salida de este comando será un resultado JSON que contiene información detallada sobre el equilibrador de carga creado, como su nombre, ID, DNS y otras propiedades relacionadas. Usamos el comando ***aws elb      describe-load-balancers --load-balancer-names your_username-elb*** para ver la información detallada de nuestro equilibrador de carga.
+   
+   # Equilibrador de carga
+   
+   ![Imagen24](https://user-images.githubusercontent.com/118635410/245304853-08e6fce2-9bd9-4d0d-9f58-909865e3f024.png)
+
+
 
 
 
