@@ -52,6 +52,7 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
   ![Imagen9](https://user-images.githubusercontent.com/118635410/245161608-cb6efd73-6664-4c10-975b-8aa72db20f63.png) 
  
  6. Abre dos ventanas de terminal adicionales y ssh en ambos servidores web. En cada uno, cd al directorio DocumentRoot (probablemente /usr/local/apache/htdocs) y modifique la página de inicio predeterminada,           index.html, de la siguiente manera.
+
     `<html><body><h1>¡Funciona!</h1>
     <p>La solicitud se envió a la instancia 1.</p>
     <p>La solicitud fue atendida por el servidor web 1.</p>
