@@ -99,7 +99,26 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
     ab -n 50 -c 5 http://nombre_dns_de_tu_balanceador_carga/
     ¿Qué significan -n 50 y -c 5? ¿Cuál es la salida?.
     
-    ![Imagen15](https://user-images.githubusercontent.com/118635410/245179658-e87b0e7f-00f2-49e5-958b-03bc4ef31684.png)
+    ![Imagen15](https://user-images.githubusercontent.com/118635410/245181084-67c5ee51-821e-4463-a9a6-92158c3cb0ae.png)
+    
+    En el comando ab -n 50 -c 5 http://nombre_dns_de_tu_balanceador_carga/, los parámetros -n 50 y -c 5 tienen los siguientes significados:
+    -n 50: Especifica el número total de solicitudes que se enviarán al servidor. En este caso, se enviarán 50 solicitudes.
+    -c 5: Especifica el número de solicitudes concurrentes que se enviarán al servidor al mismo tiempo. En este caso, se enviarán 5 solicitudes concurrentes.
+    La salida de este comando mostrará información sobre el rendimiento de la carga del servidor web. Incluirá estadísticas como el tiempo promedio de respuesta, el tiempo máximo de respuesta, el tiempo total de la     prueba, la velocidad de transferencia, entre otros datos relacionados con el rendimiento y la eficiencia del servidor bajo carga.
+    
+ 10. Ahora queremos examinar la métrica de latencia del ELB. Utiliza el siguiente comando con las mismas horas de inicio y finalización que especificó en el paso 8. 
+ 11. 
+     ***aws cloudwatch get-metric-statistics --metric-name Latency --start-time your_start_time --end-time your_end_time --period 3600 --namespace AWS/ELB --statistics Maximum --dimensions                                    Name=LoadBalancerName,Value=tu_nombre_de_usuario***
+     
+     ***aws cloudwatch get-metric-statistics --metric-name RequestCount --start-time your_start_time --end-time your_end_time --period 3600 --namespace AWS/ELB --statistics Sum --dimensions
+     Name=LoadBalancerName,Value=tu_nombre_de_usuario***
+     
+     ¿Qué resultados recibió de ambos comandos?
+     
+     ![Imagen16](https://user-images.githubusercontent.com/118635410/245181084-67c5ee51-821e-4463-a9a6-92158c3cb0ae.png)
+     
+     ![Imagen17](https://user-images.githubusercontent.com/118635410/245181084-67c5ee51-821e-4463-a9a6-92158c3cb0ae.png)
+
 
 
     
