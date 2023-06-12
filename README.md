@@ -143,7 +143,9 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
       
       ![Imagen21](https://user-images.githubusercontent.com/118635410/245301939-0105c758-9490-4182-a918-9e49df56ac5a.png)
 
-
+# Auto Scaling
+Usamos AWS CLI para configurar sus instancias EC2 para el escalado automático.
+## Parte 1: escalar hacia arriba
 
 
 
