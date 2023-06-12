@@ -146,7 +146,12 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
 # Auto Scaling
 Usamos AWS CLI para configurar sus instancias EC2 para el escalado automático.
 ## Parte 1: escalar hacia arriba
+1. Inicia sesión en el sandbox virtual. Cambia al directorio donde guarda el archivo de script de instalación de apache. Inicie una instancia de la siguiente manera. ***aws autoscaling create-launch-configuration
+   --launch-configuration-name tu_nombre_de_usuario-lc --image-id ami-d9a98cb0 --instance-type t1.micro --key-name tu_nombre_usuario-key --security-groups tu_nombre_usuario --user-data file://./apache-install***
 
+   ¿Cuál es la salida?
+   
+   ![Imagen23](https://user-images.githubusercontent.com/118635410/245301939-0105c758-9490-4182-a918-9e49df56ac5a.png)
 
 
 
