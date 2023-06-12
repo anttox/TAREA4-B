@@ -69,7 +69,7 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
     Una vez dentro abriremos el archivo index.html con el comando vi index.html, realizaremos las modificaciones de su contenido con el siguiente comando, y por último visualizamos en AWS en la parte de                 balanceadores de carga las cantidades de solicitudes que hemos hecho en cada servidor web. Cada servidor web ha realizado 4 solicitudes.
     ![Imagen10](https://user-images.githubusercontent.com/118635410/245169370-069e62c5-6b20-4f0f-bb63-163880f49d0b.png)
     
-    ![Imagen11](https://user-images.githubusercontent.com/118635410/245161608-cb6efd73-6664-4c10-975b-8aa72db20f63.png) 
+    ![Imagen11](https://user-images.githubusercontent.com/118635410/245169434-de2f85b4-9df4-4053-92c5-62af16c95bf9.png) 
 
     
 
