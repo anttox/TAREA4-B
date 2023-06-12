@@ -9,12 +9,12 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
    ¿Cuál es el DNS_Name del balanceador de carga?
 ## DNS del balanceador de carga
 ![Imagen2](https://user-images.githubusercontent.com/118635410/245042275-60394837-51e6-47d8-9381-2b79c497ec70.png)
-La opción --listeners define los detalles del oyente del balanceador de carga. En este caso lo configuramos para escuchar el balanceador de carga y las instancias de destino en el puerto 80.
+   La opción --listeners define los detalles del oyente del balanceador de carga. En este caso lo configuramos para escuchar el balanceador de carga y las instancias de destino en el puerto 80.
 
-La opción --availability-zones especifica las zonas de disponibilidad en las que se distribuirá el balanceador de carga.
+   La opción --availability-zones especifica las zonas de disponibilidad en las que se distribuirá el balanceador de carga.
 
 2. El comando describe-load-balancers describe el estado y las propiedades de tu(s) balanceador(es) de carga. Presenta este comando.
 
-***aws elb describe-load-balancers --load-balancer-name tu_nombre_de_usuario***
+   ***aws elb describe-load-balancers --load-balancer-name tu_nombre_de_usuario***
 
-¿Cuál es la salida?
+   ¿Cuál es la salida?
