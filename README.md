@@ -86,7 +86,11 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
     Ahora examina las métricas disponibles con lo siguiente: ***aws cloudwatch list-metrics --namespace "AWS/EC2"***
     ¿Viste la métrica CPUUtilization en el resultado?
     
-    ![Imagen13](https://user-images.githubusercontent.com/118635410/245174745-93dbc424-6ca3-41f1-a4b3-2d9ba8e79be3.png)
+    ![Imagen13](https://user-images.githubusercontent.com/118635410/245175908-eac3b017-d3b5-4cb5-a945-b871b3d519c3.png)
+    
+ 8. Ahora configuramos una métrica para recopilar la utilización de la CPU. Obtener la hora actual con date -u. Esta será tu hora de inicio. Tu hora de finalización debe ser 30 minutos más tarde. Haz lo siguiente.       aws cloudwatch get-metric-statistics --metric-name CPUUtilization --start-time your_start_time --end-time your_end_time --period 3600 --namespace AWS/EC2 --statistics Maximum – dimensions                             Name=InstanceId,Value=instance2_id 
+    ¿Cuál es la salida?
+    ![Imagen14](https://user-images.githubusercontent.com/118635410/245175908-eac3b017-d3b5-4cb5-a945-b871b3d519c3.png)
 
 
     
