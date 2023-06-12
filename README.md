@@ -90,7 +90,16 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
     
  8. Ahora configuramos una métrica para recopilar la utilización de la CPU. Obtener la hora actual con date -u. Esta será tu hora de inicio. Tu hora de finalización debe ser 30 minutos más tarde. Haz lo siguiente.       aws cloudwatch get-metric-statistics --metric-name CPUUtilization --start-time your_start_time --end-time your_end_time --period 3600 --namespace AWS/EC2 --statistics Maximum – dimensions                             Name=InstanceId,Value=instance2_id 
     ¿Cuál es la salida?
-    ![Imagen14](https://user-images.githubusercontent.com/118635410/245175908-eac3b017-d3b5-4cb5-a945-b871b3d519c3.png)
+    
+    ![Imagen14](https://user-images.githubusercontent.com/118635410/245179658-e87b0e7f-00f2-49e5-958b-03bc4ef31684.png)
+    
+    Para obtener la hora actual en UTC (Tiempo Universal Coordinado) usaremos el comando date -u. El comando aws cloudwatch get-metric-statistics --metric-name CPUUtilization --start-time your_start_time --end-time     your_end_time --period 3600 --namespace AWS/EC2 --statistics Maximum – dimensions Name=InstanceId,Value=instance2_id  obtendrá la métrica de utilización de la CPU para la instancia con el ID "instance2_id" en el     intervalo de tiempo desde la hora de inicio hasta la hora de finalización.
+
+ 9. Apache tiene un herramienta benchmark llamada ab. Si desea ver más información sobre ab, consulte http://httpd.apache.org/docs/2.0/programs/ab.html. Para ejecutar ab, emita el siguiente comando en tu sistema de     trabajo. 
+    ab -n 50 -c 5 http://nombre_dns_de_tu_balanceador_carga/
+    ¿Qué significan -n 50 y -c 5? ¿Cuál es la salida?.
+    
+    ![Imagen15](https://user-images.githubusercontent.com/118635410/245179658-e87b0e7f-00f2-49e5-958b-03bc4ef31684.png)
 
 
     
