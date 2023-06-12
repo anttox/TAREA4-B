@@ -31,7 +31,8 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
       La parte que indica que deseas dos instancias EC2 es --count 2. Esto especifica que se deben lanzar dos instancias.
       La parte que garantiza que tus instancias tendrán Apache instalado es --user-data file:/home/ubuntu/./apache-install. Aquí se especifica que se debe ejecutar el script apache-install al iniciar las instancias,    lo que instalará Apache automáticamente.
 
-      Para obtener el ID de la primera instancia, usaremos el siguiente comando;: aws ec2 describe-instances --query  'Reservations[0].Instances[0].InstanceId'
+      Para obtener el ID de la primera instancia, usaremos el siguiente comando: aws ec2 describe-instances --query  'Reservations[0].Instances[0].InstanceId'
   ![Imagen4](https://user-images.githubusercontent.com/118635410/245154371-2431724e-5fa4-4f22-86c1-e9801d357e2a.png)
-
+      Para obtener el ID de la segunda instancia, usaremos el siguiente comando: aws ec2 describe-instances --query  'Reservations[1].Instances[0].InstanceId'
+  ![Imagen4](https://user-images.githubusercontent.com/118635410/245154371-2431724e-5fa4-4f22-86c1-e9801d357e2a.png)    
 
