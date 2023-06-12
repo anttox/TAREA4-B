@@ -107,7 +107,7 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
     La salida de este comando mostrará información sobre el rendimiento de la carga del servidor web. Incluirá estadísticas como el tiempo promedio de respuesta, el tiempo máximo de respuesta, el tiempo total de la     prueba, la velocidad de transferencia, entre otros datos relacionados con el rendimiento y la eficiencia del servidor bajo carga.
     
  10. Ahora queremos examinar la métrica de latencia del ELB. Utiliza el siguiente comando con las mismas horas de inicio y finalización que especificó en el paso 8. 
- 11. 
+  
      ***aws cloudwatch get-metric-statistics --metric-name Latency --start-time your_start_time --end-time your_end_time --period 3600 --namespace AWS/ELB --statistics Maximum --dimensions                                    Name=LoadBalancerName,Value=tu_nombre_de_usuario***
      
      ***aws cloudwatch get-metric-statistics --metric-name RequestCount --start-time your_start_time --end-time your_end_time --period 3600 --namespace AWS/ELB --statistics Sum --dimensions
@@ -118,6 +118,16 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
      ![Imagen16](https://user-images.githubusercontent.com/118635410/245182516-4e8afdd5-2df9-40a9-9393-a8e063933d91.png)
      
      ![Imagen17](https://user-images.githubusercontent.com/118635410/245182572-ac305262-a4b4-4248-a61a-fc17a8a1addf.png)
+     
+     El primer comando te proporciona información sobre la latencia máxima experimentada por las solicitudes al balanceador de carga, mientras que el segundo comando te muestra la cantidad total de solicitudes            realizadas al balanceador de carga en un período de tiempo determinado. Estos resultados pueden ayudarte a evaluar el rendimiento y la carga en tu sistema y tomar decisiones basadas en ellos.
+ ## Parte 3: Limpieza
+ 11. Necesitamos cancelar el registro de las instancias de ELB. Haz lo siguiente.
+     
+     ***aws elb desregister-instances-from-load-balancer --load-balancer-name tu_nombre_de_usuario --instances instance1_id instance2_id***
+     
+     ¿Cuál es la salida?
+     
+     ![Imagen18](https://user-images.githubusercontent.com/118635410/245182572-ac305262-a4b4-4248-a61a-fc17a8a1addf.png)
 
 
 
