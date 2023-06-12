@@ -27,18 +27,26 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
       ***aws ec2 run-instances --image-id ami-d9a98cb0 --count 2 --instance-type t1.micro --key-name tu_nombre_de_usuario-key --security-groups tu_nombre_de_usuario --user-data file://./apache-install --placement         AvailabilityZone=us-east-1d***
    
       ¿Qué parte de este comando indica que deseas dos instancias EC2? ¿Qué parte de este comando garantiza que tus instancias tendrán Apache instalado? ¿Cuál es el ID de instancia de la primera instancia? ¿Cuál es       el ID de instancia de la segunda instancia?
+      
   ![Imagen5](https://user-images.githubusercontent.com/118635410/245156057-5edac939-0f3f-45a2-9676-16ac9b0cbed5.png)
       La parte que indica que deseas dos instancias EC2 es --count 2. Esto especifica que se deben lanzar dos instancias.
       La parte que garantiza que tus instancias tendrán Apache instalado es --user-data file:/home/ubuntu/./apache-install. Aquí se especifica que se debe ejecutar el script apache-install al iniciar las instancias,       lo que instalará Apache automáticamente.
 
-      Para obtener el ID de la primera instancia, usaremos el siguiente comando: aws ec2 describe-instances --query  'Reservations[0].Instances[0].InstanceId'
+      Para obtener el ID de la primera instancia, usaremos el siguiente comando: ***aws ec2 describe-instances --query  'Reservations[0].Instances[0].InstanceId'
+      
   ![Imagen4](https://user-images.githubusercontent.com/118635410/245154371-2431724e-5fa4-4f22-86c1-e9801d357e2a.png)
-      Para obtener el ID de la segunda instancia, usaremos el siguiente comando: aws ec2 describe-instances --query  'Reservations[1].Instances[0].InstanceId'
+  
+      Para obtener el ID de la segunda instancia, usaremos el siguiente comando: ***aws ec2 describe-instances --query  'Reservations[1].Instances[0].InstanceId'
   ![Imagen6](https://user-images.githubusercontent.com/118635410/245157387-7bcf14e9-561e-4b30-8300-d7d40e245d18.png)    
  4. Para usar ELB, tenemos que registrar las instancias EC2. Haz lo siguiente, donde instance1_id e instance2_id son los obtenidos del comando en el paso 3.
-    aws elb register-instances-with-load-balancer --load-balancer-name tu_nombre_de_usuario --instances instance1_id instancia2_id
+    ***aws elb register-instances-with-load-balancer --load-balancer-name tu_nombre_de_usuario --instances instance1_id instancia2_id
     ¿Cuál es la salida?
+    
   ![Imagen7](https://user-images.githubusercontent.com/118635410/245159279-3f2a72e9-bd9c-4701-9b54-37fe5de7d58d.png) 
     Ahora vea el estado de la instancia de los servidores cuya carga se equilibra. 
-    aws elb describe-instance-health --load-balancer-name tu_nombre_de_usuario ¿Cuál es la salida?
-  ![Imagen8](https://user-images.githubusercontent.com/118635410/245159279-3f2a72e9-bd9c-4701-9b54-37fe5de7d58d.png) 
+    ***aws elb describe-instance-health --load-balancer-name tu_nombre_de_usuario ¿Cuál es la salida?
+    
+  ![Imagen8](https://user-images.githubusercontent.com/118635410/245160343-e01bb2be-e21d-41fe-9788-d49ed52a3227.png) 
+ 5. Abre el navegador del sandox. Recupera la dirección IP de tu balanceador de carga del paso 1, ingresa la URL http://nombre_dns_de_tu_balanceador_carga/ en tu navegador web. ¿Qué apareció en el navegador?
+
+  ![Imagen9](https://user-images.githubusercontent.com/118635410/245159279-3f2a72e9-bd9c-4701-9b54-37fe5de7d58d.png) 
