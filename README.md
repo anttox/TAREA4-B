@@ -67,6 +67,9 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
     El comando cd /var/www se utiliza como ubicación predeterminada para almacenar los archivos y documentos de un servidor web. En particular, este directorio suele ser el directorio raíz (DocumentRoot) donde se       almacenan los archivos que serán servidos por el servidor web
     
     Una vez dentro abriremos el archivo index.html con el comando vi index.html, realizaremos las modificaciones de su contenido con el siguiente comando, y por último visualizamos en AWS en la parte de                 balanceadores de carga las cantidades de solicitudes que hemos hecho en cada servidor web.
+    ![Imagen10](https://user-images.githubusercontent.com/118635410/245161608-cb6efd73-6664-4c10-975b-8aa72db20f63.png)
+    
+    ![Imagen11](https://user-images.githubusercontent.com/118635410/245161608-cb6efd73-6664-4c10-975b-8aa72db20f63.png) 
 
     
 
