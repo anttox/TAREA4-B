@@ -164,25 +164,70 @@ Usamos AWS CLI para configurar sus instancias EC2 para el escalado automático.
    ![Imagen24](https://user-images.githubusercontent.com/118635410/245307658-8cc29f3a-9523-4fca-862a-9eda93326502.png)
    
    
-2. Ahora creamos un grupo de escalado automático. Haz lo siguiente. aws autoscaling create-auto-scaling-group --auto-scaling-group-name tu_nombre_de_usuario-asg --launch-configuration-name tu_nombre_de_usuario-lc --    min-size 1 --max-size 3 --load-balancer-names tu_nombre_de_usuario-elb --availability-zones us-east-1c 
+2. Ahora creamos un grupo de escalado automático. Haz lo siguiente. ***aws autoscaling create-auto-scaling-group --auto-scaling-group-name tu_nombre_de_usuario-asg --launch-configuration-name tu_nombre_de_usuario-lc    --min-size 1 --max-size 3 --load-balancer-names tu_nombre_de_usuario-elb --availability-zones us-east-1c*** 
  
    ¿Cuál es la salida?
    
-   La salida de este comando será un resultado JSON que contiene información sobre el grupo de escalado automático creado, incluyendo su nombre, configuración, tamaño mínimo y máximo, equilibradores de carga            asociados, zonas de disponibilidad y más. Usamos el comando aws autoscaling describe-auto-scaling-groups --auto-scaling-group-names vilca40-asg para visualizar la información sobre el grupo de escalado automático    creado.
+   La salida de este comando será un resultado JSON que contiene información sobre el grupo de escalado automático creado, incluyendo su nombre, configuración, tamaño mínimo y máximo, equilibradores de carga            asociados, zonas de disponibilidad y más. Usamos el comando ***aws autoscaling describe-auto-scaling-groups --auto-scaling-group-names vilca40-asg*** para visualizar la información sobre el grupo de escalado        automático creado.
    
    ![Imagen26](https://user-images.githubusercontent.com/118635410/245317809-3b20aff6-53ed-4dae-a86c-e442459056ba.png)
    
-   Para describir el grupo de escalado automático que acabas de crear, emite el siguiente comando. ***aws autoscaling describe-auto-scaling-groups --auto-scaling-group-name tu_nombre_de_usuario-asg***
+ 3. Para describir el grupo de escalado automático que acabas de crear, emite el siguiente comando. ***aws autoscaling describe-auto-scaling-groups --auto-scaling-group-name tu_nombre_de_usuario-asg***
    ¿Cuál es la salida? Deberías ver que se crea una nueva instancia EC2. Si no lo ves, espera 2 minutos y vuelve a ejecutar el comando. ¿Cuál es el ID de la instancia?
    
-   ![Imagen27](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
+   ![Imagen27](https://user-images.githubusercontent.com/118635410/245318110-e01acf30-d44b-4c19-b9c7-2a972c79a15c.png)
    
    Con el comando aws ec2 describe-instances –filters "Name=tag:aws:autoscaling:groupName,Values=vilca40-asg" encontraremos la nueva instancia EC2 creada.
    
    ![Imagen25](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
+   
+ 4. Ahora creamos una política de escalado hacía arriba seguida de una alarma de CloudWatch para determinar, en caso de que lapolítica sea cierta, que AWS necesita ampliar nuestros recursos. Escribe los dos comandos     que siguen. AnotA el valor de PolicyARN del primer comando. 
+    ***aws autoscaling put-scaling-policy --auto-scaling-group-name tu_nombre_de_usuario-asg --policy-name tu_nombre_de_usuario-scaleup --scaling-adjustment 1 --adjustment-type ChangeInCapacity --cooldown 120*** 
+    
+    ***aws cloudwatch put-metric-alarm --alarm-name tu_nombre_de_usuario-highcpualarm --metric-name CPUUtilization --namespace AWS/EC2 --statistic Average --period 120 --threshold 70 --comparison-operator                  GreaterThanThreshold --dimensions "Name=AutoScalingGroupName,Value= tu_nombre_de_usuario-asg" --evaluation-periods 1 --alarm-actions value_of_PolicyARN*** 
+    
+    ¿Cuál es la salida de ambos comandos? ¿Cuál es el valor de PolicyARN? (El valor es una cadena larga sin comillas).  
+    
+    El comando para crear una política de escalado hacia arriba es el siguiente:
+    
+    ![Imagen28](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
+    
+    "PolicyARN": "arn:aws:autoscaling:us-east-1:404009776926:scalingPolicy:3df68a10-230b-499e-a01c-bf956e9b25ef:autoScalingGroupName/vilca40-asg:policyName/vilca40-scaleup"
+    
+    El comando para crear una alarma de CloudWatch es el siguiente:
+    
+    ![Imagen29](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
+    
+    Ejecuta el siguiente comando para ver una descripción de tu alarma. ***aws cloudwatch describe-alarms --alarm-names tu_nombre_de_usuario-highcpualarm***
+    
+    ¿Cuál es la salida?
 
+    ![Imagen30](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
+    
+ 5. Inicia sesión en la instancia EC2 desde el paso 1 mediante ssh. Cambia al root. Cargaremos y ejecutaremos una herramienta stress para aumentar la utilización de procesamiento del servidor. Emite los siguientes       comandos de Linux.
+ 
+    apt-get install stress
+    
+    stress--cpu 1
+    
+    ![Imagen31](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
+    
+    Esto significa que el programa stress está generando carga de trabajo en el procesador de la instancia EC2, lo que debería aumentar la utilización de la CPU. Puedes dejar el comando ejecutándose para continuar       generando carga en el sistema o detenerlo presionando Ctrl+C en la terminal.
+    
+    Inicia un nuevo terminal. Repite el siguiente comando cada 2 minutos hasta que veas la segunda instancia EC2 y luego una tercera instancia EC2. En este punto, emite las siguientes instrucciones en la ventana de     tu terminal inicial.
+    ***aws autoscaling describe-auto-scaling-groups --auto-scaling-group-name tu_nombre_de_usuario -asg***
+    
+    ¿Cuál es la salida?
+    
+    ![Imagen32](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
+
+## Parte 2: reducir la escala
+6. Ahora exploraremos cómo AWS puede controlar el escalado hacia abajo mediante la eliminación de algunas de las máquinas virtuales creadas. Ejecuta los siguientes dos comandos, nuevamente tomando nota del PolicyARN    creado a partir del primer comando para usar en el segundo.
    
-   
+   ***aws autoscaling put-scaling-policy --auto-scaling-group-name tu_nombre_de_usuario-asg --policy-name tu_nombre_de_usuario-scaledown --scaling-adjustment -1 --adjustment-type ChangeInCapacity --cooldown 120 aws       cloudwatch put-metric-alarm --alarm-name tu_nombre_de_usuario-lowcpualarm --metric-name CPUUtilization --namespace AWS/EC2 --statistic Average --period 120 --threshold 30 --comparison-operator                       LessThanThreshold --dimensions "Name=AutoScalingGroupName,Value=tu_nombre_de_usuario-asg" --evaluation-periods 1 --alarm-actions value_of_PolicyARN***
+
+   ¿Cuáles son las salidas? ¿Cuál es el valor de PolicyARN?
+
 
  
 
