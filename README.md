@@ -270,7 +270,7 @@ Usamos AWS CLI para configurar sus instancias EC2 para el escalado automático.
    
    ![Imagen40](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
    
-#NOTAS
+# NOTAS
 
 
 
