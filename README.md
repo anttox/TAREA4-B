@@ -227,6 +227,53 @@ Usamos AWS CLI para configurar sus instancias EC2 para el escalado automático.
    ***aws autoscaling put-scaling-policy --auto-scaling-group-name tu_nombre_de_usuario-asg --policy-name tu_nombre_de_usuario-scaledown --scaling-adjustment -1 --adjustment-type ChangeInCapacity --cooldown 120 aws       cloudwatch put-metric-alarm --alarm-name tu_nombre_de_usuario-lowcpualarm --metric-name CPUUtilization --namespace AWS/EC2 --statistic Average --period 120 --threshold 30 --comparison-operator                       LessThanThreshold --dimensions "Name=AutoScalingGroupName,Value=tu_nombre_de_usuario-asg" --evaluation-periods 1 --alarm-actions value_of_PolicyARN***
 
    ¿Cuáles son las salidas? ¿Cuál es el valor de PolicyARN?
+   
+   ![Imagen33](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
+   
+   Usamos el comando aws cloudwatch describe-alarms --alarm-names vilca40-lowcpualarm para ver más información sobre la alarma.
+   
+   ![Imagen34](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
+   
+7. Cambia al terminal de la instancia EC2. Escribe ctrl+c para detener el comando stress. Vuelva a la ventana del terminal y repite el siguiente comando cada 2 minutos hasta que vea solo un EC2 en su grupo de          escalado automático. ***aws autoscaling describe-auto-scaling-groups --auto-scaling-group-name tu_nombre_de_usuario-asg***
+
+   ¿Cuál es la salida?
+   
+   ![Imagen35](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
+   
+   Repite el siguiente comando cada 2 minutos hasta que vea solo un EC2 en su grupo de escalado automático. Para ello usaremos el comando ***watch -n 120 aws autoscaling describe-auto-scaling-groups --auto-scaling        group-name tu_nombre_de_usuario-asg***. Este comando ejecutará el comando aws autoscaling describe-auto-scaling-groups cada 120 segundos (2 minutos) y mostrará la salida actualizada en tiempo real.
+   
+## Parte 3: Limpieza
+8. Elimina el grupo de escalado automático mediante el siguiente comando. Si el grupo tiene instancias o actividades de escalado en curso, debes especificar la opción para forzar la eliminación para que se realice      correctamente. Si el grupo tiene políticas, al eliminar el grupo se eliminan las políticas, las acciones de alarma subyacentes y cualquier alarma que ya no tenga una acción asociada. Después de eliminar tu grupo    de escala, elimina tus alarmas como se muestra a continuación. ***aws autoscaling delete-auto-scaling-group --auto-scaling-group-name tu_nombre_de_usuario-asg --force-delete*** 
+   ***aws cloudwatch delete-alarms --alarm-name tu_nombre_de_usuario-lowcpualarm***
+   
+   ¿Cuál es la salida?
+   
+   ![Imagen36](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
+   
+   ![Imagen37](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
+   
+   ***aws cloudwatch delete-alarms --alarm-name-tu_nombre_de_usuario-highcpualarm***
+   
+   ¿Cuál es la salida?
+   
+   ![Imagen38](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
+   
+   Elimina tu configuración de lanzamiento de la siguiente manera. ***aws autoescaling delete-launch-configuration --launch-configuration-name tu_nombre_de_usuario-lc***
+   
+   ¿Cuál es la salida? 
+   
+   ![Imagen39](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
+   
+   Finalmente, elimina tu ELB. ¿Qué comando ejecutaste? 
+   
+   Para eliminar el balanceador de carga de Elastic Load Balancing(ELB) usse el comando ***aws elb delete-load-balancer --load-balancer-name vilca40-elb*** y para verificar use el comando ***aws elbv2 describe-load    balancers.***
+   
+   ![Imagen40](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
+   
+#NOTAS
+
+
+
 
 
  
