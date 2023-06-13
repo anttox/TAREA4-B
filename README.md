@@ -163,11 +163,27 @@ Usamos AWS CLI para configurar sus instancias EC2 para el escalado automático.
    
    ![Imagen24](https://user-images.githubusercontent.com/118635410/245307658-8cc29f3a-9523-4fca-862a-9eda93326502.png)
    
-   Usaremos el comando ***aws ec2 describe intances --filters  "Name=tag:aws:autoscaling:groupName,Values=Vilca40_asg"*** para describir las instancias de Amazon EC2 que están asociadas a un grupo de escalado          automático.
    
-   Al ejecutar este comando, obtendremos información detallada sobre las instancias asociadas al grupo de escalado automático "Vilca40_asg", como la ID de la instancia, tipo de instancia, estado, direcciones IP,        etc.
+2. Ahora creamos un grupo de escalado automático. Haz lo siguiente. aws autoscaling create-auto-scaling-group --auto-scaling-group-name tu_nombre_de_usuario-asg --launch-configuration-name tu_nombre_de_usuario-lc --    min-size 1 --max-size 3 --load-balancer-names tu_nombre_de_usuario-elb --availability-zones us-east-1c 
+ 
+   ¿Cuál es la salida?
    
-   ![Imagen25](https://user-images.githubusercontent.com/118635410/245307658-8cc29f3a-9523-4fca-862a-9eda93326502.png)
+   La salida de este comando será un resultado JSON que contiene información sobre el grupo de escalado automático creado, incluyendo su nombre, configuración, tamaño mínimo y máximo, equilibradores de carga            asociados, zonas de disponibilidad y más. Usamos el comando aws autoscaling describe-auto-scaling-groups --auto-scaling-group-names vilca40-asg para visualizar la información sobre el grupo de escalado automático    creado.
+   
+   ![Imagen26](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
+   
+   Para describir el grupo de escalado automático que acabas de crear, emite el siguiente comando. ***aws autoscaling describe-auto-scaling-groups --auto-scaling-group-name tu_nombre_de_usuario-asg***
+   ¿Cuál es la salida? Deberías ver que se crea una nueva instancia EC2. Si no lo ves, espera 2 minutos y vuelve a ejecutar el comando. ¿Cuál es el ID de la instancia?
+   
+   ![Imagen27](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
+   
+   Con el comando aws ec2 describe-instances –filters "Name=tag:aws:autoscaling:groupName,Values=vilca40-asg" encontraremos la nueva instancia EC2 creada.
+   
+   ![Imagen25](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
+
+   
+   
+
  
 
 
