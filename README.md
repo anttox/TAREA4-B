@@ -161,8 +161,14 @@ Usamos AWS CLI para configurar sus instancias EC2 para el escalado automático.
    
    # Equilibrador de carga
    
-   ![Imagen24](https://user-images.githubusercontent.com/118635410/245304853-08e6fce2-9bd9-4d0d-9f58-909865e3f024.png)
-
+   ![Imagen24](https://user-images.githubusercontent.com/118635410/245307658-8cc29f3a-9523-4fca-862a-9eda93326502.png)
+   
+   Usaremos el comando ***aws ec2 describe intances --filters  "Name=tag:aws:autoscaling:groupName,Values=Vilca40_asg"*** para describir las instancias de Amazon EC2 que están asociadas a un grupo de escalado          automático.
+   
+   Al ejecutar este comando, obtendremos información detallada sobre las instancias asociadas al grupo de escalado automático "Vilca40_asg", como la ID de la instancia, tipo de instancia, estado, direcciones IP,        etc.
+   
+   ![Imagen25](https://user-images.githubusercontent.com/118635410/245307658-8cc29f3a-9523-4fca-862a-9eda93326502.png)
+ 
 
 
 
