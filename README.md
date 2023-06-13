@@ -170,7 +170,7 @@ Usamos AWS CLI para configurar sus instancias EC2 para el escalado automático.
    
    La salida de este comando será un resultado JSON que contiene información sobre el grupo de escalado automático creado, incluyendo su nombre, configuración, tamaño mínimo y máximo, equilibradores de carga            asociados, zonas de disponibilidad y más. Usamos el comando aws autoscaling describe-auto-scaling-groups --auto-scaling-group-names vilca40-asg para visualizar la información sobre el grupo de escalado automático    creado.
    
-   ![Imagen26](https://user-images.githubusercontent.com/118635410/245312184-50cf029d-4852-40bc-8b3d-72107e5a6333.png)
+   ![Imagen26](https://user-images.githubusercontent.com/118635410/245317809-3b20aff6-53ed-4dae-a86c-e442459056ba.png)
    
    Para describir el grupo de escalado automático que acabas de crear, emite el siguiente comando. ***aws autoscaling describe-auto-scaling-groups --auto-scaling-group-name tu_nombre_de_usuario-asg***
    ¿Cuál es la salida? Deberías ver que se crea una nueva instancia EC2. Si no lo ves, espera 2 minutos y vuelve a ejecutar el comando. ¿Cuál es el ID de la instancia?
