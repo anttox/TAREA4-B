@@ -45,7 +45,7 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
     
     ![Imagen7](https://user-images.githubusercontent.com/118635410/245159279-3f2a72e9-bd9c-4701-9b54-37fe5de7d58d.png) 
     Ahora vea el estado de la instancia de los servidores cuya carga se equilibra. 
-    ***aws elb describe-instance-health --load-balancer-name tu_nombre_de_usuario ¿Cuál es la salida?
+    ***aws elb describe-instance-health --load-balancer-name tu_nombre_de_usuario*** ¿Cuál es la salida?
     
     ![Imagen8](https://user-images.githubusercontent.com/118635410/245160343-e01bb2be-e21d-41fe-9788-d49ed52a3227.png) 
  
