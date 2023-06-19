@@ -21,24 +21,24 @@ Aquí, usamos Amazon Elastic Load Balancing (ELB) y Amazon Cloud Watch a través
 ## Información detallada sobre el balanceador de carga 
    ![Imagen3](https://user-images.githubusercontent.com/118635410/245044524-ed3c1239-30d2-4561-b007-84b63495696d.png)
    
- 3. La salida del comando aws elb describe-load-balancers --load-balancer-name tu_nombre_de_usuario en AWS CLI proporcionará información detallada sobre el balanceador de carga especificado.
+   La salida del comando aws elb describe-load-balancers --load-balancer-name tu_nombre_de_usuario en AWS CLI proporcionará información detallada sobre el balanceador de carga especificado.
    
-      Creamos dos instancias EC2, cada una ejecutando un servidor web Apache. Emite lo siguiente.
-      ***aws ec2 run-instances --image-id ami-d9a98cb0 --count 2 --instance-type t1.micro --key-name tu_nombre_de_usuario-key --security-groups tu_nombre_de_usuario --user-data file://./apache-install --placement         AvailabilityZone=us-east-1d***
+ 3. Creamos dos instancias EC2, cada una ejecutando un servidor web Apache. Emite lo siguiente.
+    ***aws ec2 run-instances --image-id ami-d9a98cb0 --count 2 --instance-type t1.micro --key-name tu_nombre_de_usuario-key --security-groups tu_nombre_de_usuario --user-data file://./apache-install --placement         AvailabilityZone=us-east-1d***
    
-      ¿Qué parte de este comando indica que deseas dos instancias EC2? ¿Qué parte de este comando garantiza que tus instancias tendrán Apache instalado? ¿Cuál es el ID de instancia de la primera instancia? ¿Cuál es       el ID de instancia de la segunda instancia?
+    ¿Qué parte de este comando indica que deseas dos instancias EC2? ¿Qué parte de este comando garantiza que tus instancias tendrán Apache instalado? ¿Cuál es el ID de instancia de la primera instancia? ¿Cuál es       el ID de instancia de la segunda instancia?
       
-      ![Imagen5](https://user-images.githubusercontent.com/118635410/245156057-5edac939-0f3f-45a2-9676-16ac9b0cbed5.png)
-      La parte que indica que deseas dos instancias EC2 es --count 2. Esto especifica que se deben lanzar dos instancias.
-      La parte que garantiza que tus instancias tendrán Apache instalado es --user-data file:/home/ubuntu/./apache-install. Aquí se especifica que se debe ejecutar el script apache-install al iniciar las instancias,       lo que instalará Apache automáticamente.
+    ![Imagen5](https://user-images.githubusercontent.com/118635410/245156057-5edac939-0f3f-45a2-9676-16ac9b0cbed5.png)
+    La parte que indica que deseas dos instancias EC2 es --count 2. Esto especifica que se deben lanzar dos instancias.
+    La parte que garantiza que tus instancias tendrán Apache instalado es --user-data file:/home/ubuntu/./apache-install. Aquí se especifica que se debe ejecutar el script apache-install al iniciar las instancias,      lo que instalará Apache automáticamente.
 
-      Para obtener el ID de la primera instancia, usaremos el siguiente comando: ***aws ec2 describe-instances --query  'Reservations[0].Instances[0].InstanceId'
+    Para obtener el ID de la primera instancia, usaremos el siguiente comando: ***aws ec2 describe-instances --query  'Reservations[0].Instances[0].InstanceId'
       
-      ![Imagen4](https://user-images.githubusercontent.com/118635410/245154371-2431724e-5fa4-4f22-86c1-e9801d357e2a.png)
+    ![Imagen4](https://user-images.githubusercontent.com/118635410/245154371-2431724e-5fa4-4f22-86c1-e9801d357e2a.png)
   
-      Para obtener el ID de la segunda instancia, usaremos el siguiente comando: ***aws ec2 describe-instances --query  'Reservations[1].Instances[0].InstanceId'
+    Para obtener el ID de la segunda instancia, usaremos el siguiente comando: ***aws ec2 describe-instances --query  'Reservations[1].Instances[0].InstanceId'
       
-      ![Imagen6](https://user-images.githubusercontent.com/118635410/245157387-7bcf14e9-561e-4b30-8300-d7d40e245d18.png)    
+    ![Imagen6](https://user-images.githubusercontent.com/118635410/245157387-7bcf14e9-561e-4b30-8300-d7d40e245d18.png)    
  4. Para usar ELB, tenemos que registrar las instancias EC2. Haz lo siguiente, donde instance1_id e instance2_id son los obtenidos del comando en el paso 3.
     ***aws elb register-instances-with-load-balancer --load-balancer-name tu_nombre_de_usuario --instances instance1_id instancia2_id
     ¿Cuál es la salida?
@@ -270,7 +270,6 @@ Usamos AWS CLI para configurar sus instancias EC2 para el escalado automático.
    
    ![Imagen40](https://user-images.githubusercontent.com/118635410/245365269-45be5570-fb67-4f8d-87d5-e331df5545d5.png)
    
-# NOTAS
 
 
 
