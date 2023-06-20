@@ -269,6 +269,15 @@ Usamos AWS CLI para configurar sus instancias EC2 para el escalado automático.
    Para eliminar el balanceador de carga de Elastic Load Balancing(ELB) usse el comando ***aws elb delete-load-balancer --load-balancer-name vilca40-elb*** y para verificar use el comando ***aws elbv2 describe-load    balancers.***
    
    ![Imagen40](https://user-images.githubusercontent.com/118635410/245365269-45be5570-fb67-4f8d-87d5-e331df5545d5.png)
+
+
+##NOTAS
+Hubo un error en la explicacion del problema del comando de la parte 3
+Creamos dos instancias EC2, cada una ejecutando un servidor web Apache. Emite lo siguiente.
+    ***aws ec2 run-instances --image-id ami-d9a98cb0 --count 2 --instance-type t1.micro --key-name tu_nombre_de_usuario-key --security-groups tu_nombre_de_usuario --user-data file://./apache-install --placement         AvailabilityZone=us-east-1d*** 
+Hay un error en la parte de  AvailabilityZone=us-east-1d, la zona debia ser us-east-1a. Ambas instancias trabajaban en una zona ue no permitia el trafico. De esa manera se puede solucionar el error de Instance has not passed the configured HealthyThreshold number of health checkks consecutively.
+
+![Imagen41](https://user-images.githubusercontent.com/118635410/245160343-e01bb2be-e21d-41fe-9788-d49ed52a3227.png)
    
 
 
