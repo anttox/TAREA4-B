@@ -272,6 +272,7 @@ Usamos AWS CLI para configurar sus instancias EC2 para el escalado automático.
 
 
 ##NOTAS
+
 Hubo un error en la explicacion del problema del comando de la parte 3
 Creamos dos instancias EC2, cada una ejecutando un servidor web Apache. Emite lo siguiente.
     ***aws ec2 run-instances --image-id ami-d9a98cb0 --count 2 --instance-type t1.micro --key-name tu_nombre_de_usuario-key --security-groups tu_nombre_de_usuario --user-data file://./apache-install --placement         AvailabilityZone=us-east-1d*** 
